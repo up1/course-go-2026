@@ -3,8 +3,12 @@
 
 ## Topics
 * Develope REST API with Go
-  * Gin framework
-  * Echo framework
+  * Web frameworks for Go
+    * Gin framework
+    * Echo framework 
+  * Project structure and organization
+  * Handling HTTP requests and responses
+  * Middleware in Go web applications  
 * Working with Database
   * RDBMS with PostgreSQL
   * Caching with Redis
