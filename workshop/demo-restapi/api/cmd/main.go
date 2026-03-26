@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"log/slog"
 	"os"
 
 	"api/cache"
@@ -32,14 +33,15 @@ func main() {
 	svc := services.NewProductService(repo, redisCache)
 	handler := handlers.NewProductHandler(svc)
 
-	r := gin.Default()
+	r := gin.New()
+
 	r.POST("/products", handler.Create)
 	r.GET("/products/:id", handler.GetByID)
 
 	port := getEnv("PORT", "8080")
-	log.Printf("starting server on :%s", port)
+	slog.Info("starting server", "port", port)
 	if err := r.Run(":" + port); err != nil {
-		log.Fatalf("server error: %v", err)
+		slog.Error("server error", "error", err)
 	}
 }
 
